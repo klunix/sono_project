@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<style>
+    #maincontainer {
+
+        max-width: 500px;
+    }
+    fieldset.grupode2 {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 0.3rem;
+        margin: 0px;
+    }
+</style>
+
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li>Sono Colchões</li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="">Bioimpedancia</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="maincontainer" class="container">
+        <form method="post">
+            {% csrf_token %}
+            <label>Qual é o seu nome?
+                <input type="text" name="nome" required id="id_nome" maxlength="150">
+            </label>
+
+            <label>Qual é o seu número de telefone (apenas números)?
+                <input type="tel" name="telefone" required id="id_telefone" maxlength="13">
+            </label>
+
+            <label>Qual é o seu email?
+                <input type="email" name="email" required id="id_email" maxlength="150">
+            </label>
+
+            <label>Qual tipo de colchão você usava?
+                <select name="modelo_anterior" id="id_modelo_anterior">
+                    <option value="NS">Não Sabe</option>
+                    <option value="EF">Extra Firme</option>
+                    <option value="F">Firme</option>
+                    <option value="I">Intermediário</option>
+                    <option value="M">Macio</option>
+                </select>
+            </label>
+        
+            <fieldset class="grupode2">
+                <label>Quantos centrimetros de altura você tem? (cm):
+                    <input type="number" name="altura" required id="id_altura" max="250" min="50">
+                </label>
+                <label>Quantos anos de idade você tem?
+                    <input type="number" name="idade" required id="id_idade" max="110">
+                </label>
+            </fieldset>
+        
+            <label>Você tem alguma doença de coluna?
+                <select name="tem_doenca" id="id_tem_doenca">
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select>
+            </label>
+
+            <label>Quantas pessoas além de você iram dormir no colchão? <br> <output id="output_quantos_acompanhantes">0</output> pessoas exceto eu!
+                <input type="range" name="quantos_acompanhantes" id="id_quantos_acompanhantes" max="3" min="0" value="0"
+                    oninput="output_quantos_acompanhantes.textContent = this.value;">
+            </label>
+
+            <label>Informe os pesos separado por ";" em ordem esquerda cima para direita baixo.
+                <textarea name="peso" id="id_peso" placeholder="35.0;20.0;20.0;50.0;30.0;30.0"></textarea>
+            </label>
+            
+            <button type="submit">Obter Recomendação</button>
+        </form>        
+    </div>
+</body>
+</html>
