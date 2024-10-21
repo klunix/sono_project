@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+    <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'global.css' %}">
+    <title>Sonia - Sono MTF Mu-4</title>
+</head>
+<body>
+    <nav>
+        <a href="#" class="brand">
+            <img class="logo" src="{% static 'img/logo.jpg' %}" />
+            <span>SONO <small>MTF Mu-4</small></span>
+        </a>
+
+        <!-- responsive-->
+        <input id="bmenub" type="checkbox" class="show">
+        <label for="bmenub" class="burger pseudo button">&#9776;</label>
+
+        <div class="menu">
+            <a href="#" class="pseudo button icon-picture">Demo</a>
+            <a href="#" class="pseudo button icon-puzzle">Treinamento</a>
+            <a href="#" class="button icon-puzzle">Sonia</a>
+        </div>
+    </nav>
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>Só Colchões © 2024 - Todos os direitos reservados</p>
+        <p>Feito por quem  ❤️  dormir</p>
+    </footer>
+</body>
+</html>

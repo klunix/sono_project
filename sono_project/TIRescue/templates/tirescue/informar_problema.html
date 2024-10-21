@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TI-Rescue!!</title>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+<style>
+    #maincontainer {
+
+        max-width: 500px;
+    }
+    fieldset.grupode2 {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 0.3rem;
+        margin: 0px;
+    }
+</style>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li>Sono Colchões - TI Rescue</li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="">Bioimpedancia</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="maincontainer" class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Reporta um Problema</h2>
+            <label>Qual é o seu nome?
+                <input type="text" name="author" required id="id_author" maxlength="150" placeholder="Nome">
+            </label>
+        
+            <label>Nome do produto com problema
+                <input type="text" name="titulo" required maxlength="300" placeholder="BASE SOFTFLEX BAÚ - 138x188 - CORINO BRANCO">
+            </label>
+        
+            <h3>Onde está o problema?</h3>
+            <fieldset>
+                <label>
+                    <input type="checkbox" name="problema_inexistencia">
+                    <span class="checkable">Inexistência</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="problema_duplicado">
+                    <span class="checkable">Duplicado</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="problema_preco">
+                    <span class="checkable">Preço</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="problema_nome">
+                    <span class="checkable">Nome do produto</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="problema_marca">
+                    <span class="checkable">Marca</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="problema_ncm">
+                    <span class="checkable">NCM ou Código CEST (geralmente se não conseguir gerar nota fiscal esse é o motivo)</span>
+                </label>
+                <input type="text" placeholder="Outro problema que não está na lista" name="outro_problema">
+            </fieldset>
+            
+            <button type="submit">Enviar Problema</button>
+        </form>        
+    </div>
+</body>
+</html>
